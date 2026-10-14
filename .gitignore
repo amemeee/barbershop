@@ -1,0 +1,4 @@
+/data/
+# Old PHP version, kept locally only (GitHub Pages serves index.html)
+/index.php
+/router.php
