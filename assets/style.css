@@ -3,6 +3,8 @@
     --white: #f4f2ec;
     --grey: #8a8a85;
     --line: 3px;
+    /* side padding: grows with the screen, then centres content in a 1240px column */
+    --gutter: max(clamp(20px, 6vw, 80px), calc((100% - 1240px) / 2));
     --display: 'Anton', Impact, sans-serif;
     --mono: 'Space Mono', ui-monospace, monospace;
 }
@@ -10,6 +12,7 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 html { scroll-behavior: smooth; }
+section[id] { scroll-margin-top: 72px; } /* clear the sticky nav */
 
 body {
     background: var(--black);
@@ -50,7 +53,7 @@ a { color: inherit; }
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 14px clamp(16px, 4vw, 48px);
+    padding: 14px var(--gutter);
     background: var(--black);
     border-bottom: var(--line) solid var(--white);
 }
@@ -89,9 +92,9 @@ a { color: inherit; }
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
-    gap: 40px;
+    gap: clamp(40px, 6vw, 96px);
     min-height: calc(100vh - 70px);
-    padding: 40px clamp(16px, 4vw, 48px);
+    padding: 40px var(--gutter);
 }
 .eyebrow {
     text-transform: uppercase;
@@ -174,7 +177,7 @@ a { color: inherit; }
 @keyframes pole { to { background-position: 0 0, 124.45px 0; } }
 
 /* ---------- Sections ---------- */
-.section { padding: 90px clamp(16px, 4vw, 48px); }
+.section { padding: 90px var(--gutter); }
 .section-invert { background: var(--white); color: var(--black); }
 .section-title {
     font: clamp(2.6rem, 6vw, 4.5rem)/1 var(--display);
@@ -254,7 +257,7 @@ a { color: inherit; }
 .barber p { font-size: .85rem; color: #555; }
 
 /* visit */
-.visit { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+.visit { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 96px); align-items: start; }
 address { font-style: normal; font-size: 1.1rem; line-height: 2; }
 .hours { width: 100%; border-collapse: collapse; font-size: 1.05rem; }
 .hours th, .hours td { padding: 16px 0; border-bottom: var(--line) solid var(--white); text-align: left; }
@@ -310,7 +313,7 @@ address { font-style: normal; font-size: 1.1rem; line-height: 2; }
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 12px;
-    padding: 28px clamp(16px, 4vw, 48px);
+    padding: 28px var(--gutter);
     border-top: var(--line) solid var(--white);
     font-size: .8rem;
     text-transform: uppercase;
@@ -348,7 +351,7 @@ address { font-style: normal; font-size: 1.1rem; line-height: 2; }
 
 /* ---------- Booking steps ---------- */
 .booking { display: grid; gap: 28px; }
-.step { border: var(--line) solid var(--black); padding: 24px; min-width: 0; }
+.step { border: var(--line) solid var(--black); padding: 28px 32px; min-width: 0; }
 .step legend {
     padding: 0 10px;
     font: 1.5rem var(--display);
